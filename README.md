@@ -1,4 +1,4 @@
-# Battleship
+# Ship War
 
 This variation on a popular game is one of the projects I'm working on to better know Node.js.
 
