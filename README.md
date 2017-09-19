@@ -8,12 +8,11 @@ I've finished the development plan and some initial documents. The next step is 
 
 ## Documentation
 
-- [Rules](docs/instructions.md)
+- [Rules](docs/rules.md)
 - [Development Plan](docs/developmentplan.md)
 - [Technology Decisions](docs/technologies.md)
 - [Architecture](docs/architecture.md)
 - [Product Backlog](docs/productBacklog.md)
-- [Comments](docs/comments.md)
 
 ## Running the Tests
 
