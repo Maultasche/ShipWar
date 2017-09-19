@@ -1,0 +1,22 @@
+{
+  "name": "ShipWar",
+  "version": "1.0.0",
+  "description": "A naval war game",
+  "main": "index.js",
+  "repository": "https://github.com/Maultasche/ShipWar.git",
+  "author": "Kevin Peter <kevin.peter@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-jest": "^21.0.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^21.1.0"
+  }
+}
