@@ -1,7 +1,7 @@
 "use strict";
 
 import _ from "lodash";
-import shipTypes from "../../src/game/shipTypes";
+import shipTypes from "../../../src/server/game/shipTypes";
 
 describe("verifying ship types", () => {
 	test("there are five ship types", () => {

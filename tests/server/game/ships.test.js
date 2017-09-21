@@ -1,14 +1,14 @@
 "use strict";
 
 import _ from "lodash";
-import ships from "../../src/game/ships";
-import shipTypes from "../../src/game/shipTypes";
+import ships from "../../../src/server/game/ships";
+import shipTypes from "../../../src/server/game/shipTypes";
 
 describe("creating player ships", () => {
 	let playerShips = null;
 
 	beforeEach(() => {
-		playerShips = ships.createPlayerShips();
+		playerShips = ships.createPlayerShips(_.values(shipTypes));
 	});
 
 	it("5 player ships are created", () => {
