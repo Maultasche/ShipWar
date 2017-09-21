@@ -22,13 +22,38 @@ I'm going to be prioritizing the game logic first, then the API functionality (t
 
 ## Game Logic
 
+This is where we discuss the architecture of the core game logic.
+
+The game logic will assume that the commands it is given are valid. Input validation will be performed by the input validation module.
+
+### Game State
+
 The game state is stored in an object, and contains whose turn it is, the ship grids (stores how the ships are placed), the hit grids (stores where the hits and misses occurred), and a collection of ship objects containing information about the state of the ships. Each player has a ship grid (secret information), and hit grid (public information), and a collection of ship objects (secret information).
 
 The ship grid contains a bunch of cells. Cells can either be water cells or ship cells. Each ship cell has a corresponding ship object, which we can look at to identify the state of the ship. Each ship object also has a collection of cells for each square the ship occupies, which we can use to track how damaged the ship is.
 
 The ship placement is done by identifying a ship to be placed, the grid coordinates where it is to be placed (the front cell of the ship corresponds to the placement coordinate), and the orientation (vertical and horizontal). If the placement can be made, ship cells are placed in the grid at the appropriate location.
 
-The game logic will assume that the commands it is given are valid. Input validation will be performed by the input validation module.
+### Game Commands
+
+Game commands are objects that identify an action command in the game and its associated parameters. Action commands can be originated from user input, network requests, or just some other code (such as an AI player). This decouples the action from the method of generating it.
+
+### Game Logic Interface
+
+The interface to the game logic will allow the game logic to be encapsulated in its module. The interface will provide the following functionality.
+
+- Allows a game to be created (with a generated ID or an ID as input? How will this effect storage in a data store?) (User IDs for the players should be stored in the game state as well)
+- Allows the game state to be retrieved for storage
+- Allows a game to be resumed by passing it a game state
+- Allows us to put a game action command on the game action command stream (one per game?)
+- Exposes a game event stream, which consumers can subscribe to and handle the events (one per game?)
+- Tells us whose turn it is
+
+### Game Streams
+
+We could have separate streams per game, but what may happen is that we have a master input stream and event stream that the core game logic will pull from and push to. It should be able to handle a stream of commands from multiple game just fine as long as the objects in the master command stream identify the game that it applies to.
+
+At a higher level, there will likely be per-game streams where we pull the commands from those streams, wrap them in an object that identifies the game that it applies to, and merge them all into the master stream.  The outgoing event stream will be the opposite. A function will be reading all the events off of the master stream, and if they apply to a particular game, unwrapping them and putting them on the game-specific event stream.
 
 ## Input Validation
 

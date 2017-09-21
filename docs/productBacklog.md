@@ -19,7 +19,7 @@ Items are ordered from highest value to lowest value. I'll start at the top and 
 - [x] Stub out the ship functionality
 - [x] Unit test the ship functionality
 - [x] Implement the ship functionality
-- [ ] Unit test the funciton that creates the initial game state
+- [ ] Unit test the function that creates the initial game state
 - [ ] Implement the function that creates the initial game state
 - [ ] Stub out the ship placement logic
 - [ ] Unit test the ship placement logic
