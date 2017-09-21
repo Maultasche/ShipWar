@@ -17,7 +17,11 @@
 function createInitialHitGrid(width, height) {
 	let arraySize = width * height;
 
-	let hitGrid = Array(arraySize).fill(null);
+	let hitGrid = {
+		width,
+		height,
+		cells: Array(arraySize).fill(null)
+	};
 
 	return hitGrid;
 }

@@ -3,7 +3,6 @@
  */
 
 import _ from "lodash";
-import shipTypes from "./shipTypes";
 
 //Enumerate the ship cell states
 let cellState = {
@@ -13,10 +12,11 @@ let cellState = {
 
 /**
  * Creates the ships available to a player
+ * @param {array} The types of ships to be created
  * @return {array} A collection of the ships available to a player
  */
-function createPlayerShips() {
-	return _.values(shipTypes).map(shipType => createShip(shipType));
+function createPlayerShips(shipTypes) {
+	return shipTypes.map(shipType => createShip(shipType));
 }
 
 /**
